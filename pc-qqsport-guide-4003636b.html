@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>再次遇见 · 腾讯体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f6fafc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1b2a3b;
+      padding: 2rem 1.25rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* 开场短句 — 清爽呼吸感 */
+    .opening {
+      padding: 2.4rem 0 1.2rem;
+    }
+
+    .opening h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0d2b3e;
+      line-height: 1.3;
+    }
+
+    .opening h1 span {
+      background: linear-gradient(135deg, #106a7b 0%, #2596a8 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .opening .intro-tag {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: #3b6b7a;
+      background: #d9ecf0;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+
+    /* 承接段落 — 克制信息密度 */
+    .recall {
+      background: #ffffff;
+      padding: 1.6rem 1.8rem;
+      margin: 0.8rem 0 2.0rem;
+      border-radius: 28px;
+      box-shadow: 0 6px 16px rgba(12, 56, 68, 0.04);
+      border-left: 6px solid #239faf;
+    }
+
+    .recall p {
+      font-size: 1.06rem;
+      color: #1e3643;
+    }
+
+    .recall strong {
+      font-weight: 500;
+      color: #0d5b69;
+    }
+
+    .recall .mention-link {
+      color: #1a7d8b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #7bbcc7;
+      transition: border-color 0.2s;
+    }
+
+    .recall .mention-link:hover {
+      border-bottom: 1px solid #106a7b;
+    }
+
+    /* 特点网格卡片 — 蓝绿色点缀 */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin: 2.0rem 0 1.8rem;
+    }
+
+    @media (min-width: 520px) {
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-card {
+      background: white;
+      padding: 1.5rem 1.4rem;
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(10, 64, 78, 0.04);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid #e4f0f3;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 6px 18px rgba(18, 104, 118, 0.08);
+      transform: translateY(-2px);
+      border-color: #b1d9e2;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #054d5a;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-card h3::before {
+      content: "▹";
+      color: #2f9bae;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+      color: #2b4a56;
+      line-height: 1.55;
+    }
+
+    .feature-card .sub {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: #558896;
+      background: #ecf6f9;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+    }
+
+    /* 温和场景段落 */
+    .scene {
+      background: #daeef3;
+      padding: 1.8rem 1.8rem 1.6rem;
+      border-radius: 32px;
+      margin: 1.8rem 0 1.6rem;
+      color: #16323d;
+    }
+
+    .scene p {
+      font-size: 1.02rem;
+      max-width: 98%;
+    }
+
+    .scene .scene-highlight {
+      background: white;
+      display: inline-block;
+      padding: 0.1rem 1.1rem;
+      border-radius: 50px;
+      font-weight: 500;
+      color: #105b68;
+      margin-bottom: 0.4rem;
+    }
+
+    /* 提示 / FAQ摘要 融合 */
+    .tip-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      background: white;
+      border-radius: 32px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.4rem 0 2rem;
+      box-shadow: 0 2px 10px rgba(0, 30, 40, 0.02);
+      border: 1px solid #d6eaeef0;
+    }
+
+    .tip-item {
+      flex: 1 1 180px;
+    }
+
+    .tip-item .q {
+      font-weight: 500;
+      color: #07515e;
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .tip-item .a {
+      font-size: 0.9rem;
+      color: #3c6875;
+      line-height: 1.5;
+      margin-top: 0.2rem;
+    }
+
+    .tip-item .a a {
+      color: #1a7d8b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+
+    .tip-item .a a:hover {
+      border-bottom: 1px solid #188996;
+    }
+
+    /* 温和结尾 + 收藏/再次访问情绪 */
+    .closing {
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid #cde1e6;
+    }
+
+    .closing p {
+      font-size: 1rem;
+      color: #1b3b48;
+      max-width: 90%;
+    }
+
+    .closing .bookmark-note {
+      background: #eff8fb;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 0.88rem;
+      color: #135e6b;
+      margin-top: 0.6rem;
+    }
+
+    .closing .bookmark-note i {
+      font-style: normal;
+      background: #239faf;
+      color: white;
+      padding: 0.05rem 0.5rem;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      margin-right: 3px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d2e8ed;
+      margin: 0.8rem 0;
+    }
+
+    /* 移动端极简优化 */
+    @media (max-width: 440px) {
+      body { padding: 1.6rem 0.9rem; }
+      .opening h1 { font-size: 1.8rem; }
+      .recall { padding: 1.2rem 1.2rem; }
+      .feature-card { padding: 1.2rem; }
+      .scene { padding: 1.3rem; }
+      .tip-section { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开场短句：简洁，有再次见面的情绪 -->
+  <div class="opening">
+    <h1>又一次打开 · <span>腾讯体育</span></h1>
+    <div class="intro-tag">熟悉节奏，更多内容</div>
+  </div>
+
+  <!-- 承接段落：以再次访问、收藏为线索，自然嵌入链接 -->
+  <div class="recall">
+    <p>
+      也许你已经有一阵子没有打开体育页面，但习惯并不会消失。从常规赛到焦点战，从数据追踪到赛后解读，<strong>再次回到</strong><a href="https://pc-qqsport.com" class="mention-link">腾讯体育</a>，你会发现界面更利落、信息层级也更清晰。将站点添加到书签或浏览器常用栏，下一次想浏览比分或赛程时，就能直接进入。
+    </p>
+  </div>
+
+  <!-- 特点列表：以卡片网格承载，蓝绿色点缀 -->
+  <div class="features">
+    <div class="feature-card">
+      <h3>赛事覆盖</h3>
+      <p>NBA、CBA、欧冠、中超、五大联赛…… 主流赛事直播与回放聚合，不再需要切换多个源。</p>
+      <span class="sub">赛程实时更新</span>
+    </div>
+    <div class="feature-card">
+      <h3>数据与专栏</h3>
+      <p>每场比赛的球员统计、进阶数据以及赛后拆解，兼顾深度读者与快速浏览者。</p>
+      <span class="sub">趋势图 · 对比</span>
+    </div>
+    <div class="feature-card">
+      <h3>个性化关注</h3>
+      <p>收藏你喜欢的球队或选手，首页动态会按你的偏好调整内容密度，减少信息过载。</p>
+      <span class="sub">关注列表同步</span>
+    </div>
+    <div class="feature-card">
+      <h3>界面与响应</h3>
+      <p>无论使用桌面浏览器还是平板、手机，核心模块均经过布局优化，文字清晰可读。</p>
+      <span class="sub">自适应网格</span>
+    </div>
+  </div>
+
+  <!-- 场景段落：温和提示，延续再次访问的氛围 -->
+  <div class="scene">
+    <span class="scene-highlight">📌 一个使用场景</span>
+    <p>
+      周末打开浏览器，进入已保存的书签 —— 查看接下来两小时的比赛预告，翻阅前一场的赛后摘要，再随手把感兴趣的直播加入提醒。整个过程不需要登录或注册，就可以获得完整的内容浏览体验。
+    </p>
+  </div>
+
+  <!-- 提示 + FAQ 摘要融合块，蓝绿色轻点缀，包含指向链接的句子 -->
+  <div class="tip-section">
+    <div class="tip-item">
+      <span class="q">是否必须登录？</span>
+      <span class="a">大部分内容（赛程、新闻、数据、集锦）无需登录即可浏览。部分直播或高清回放可能需要关联账户。</span>
+    </div>
+    <div class="tip-item">
+      <span class="q">如何持续获得更新？</span>
+      <span class="a">将 <a href="https://pc-qqsport.com">腾讯体育</a> 加入浏览器书签或手机主屏幕，下次访问时首页即呈现最新内容。</span>
+    </div>
+    <div class="tip-item">
+      <span class="q">移动端体验如何？</span>
+      <span class="a">页面采用响应式设计，在手机和平板上阅读、切换板块都比较顺畅，无需横向缩放。</span>
+    </div>
+  </div>
+
+  <!-- 温和结尾，再次强调收藏和持续关注，但不夸张 -->
+  <div class="closing">
+    <p>
+      信息流不断变化，而一个稳定的入口能节省不少时间。如果你觉得平台内容符合自己平时的浏览习惯，不妨将它保留在常用位置。
+    </p>
+    <div class="bookmark-note">
+      <i>⌘</i> 或 <i>Ctrl+D</i> 收藏页面 · 下次访问依旧快速
+    </div>
+  </div>
+
+  <!-- 极简分隔，不干扰阅读 -->
+  <hr>
+  <div style="font-size:0.75rem; color:#719ca8; text-align:right; margin-top: 0.2rem; opacity:0.6;">d7fbff0289b5cd37</div>
+</div>
+</body>
+</html>
